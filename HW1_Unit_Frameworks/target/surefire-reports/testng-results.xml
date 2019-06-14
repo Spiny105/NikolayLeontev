@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="12" passed="12">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Sum and subtract" duration-ms="58" started-at="2019-06-14T21:13:44Z" finished-at="2019-06-14T21:13:44Z">
+    <groups>
+    </groups>
+    <test name="Sum and subtract" duration-ms="58" started-at="2019-06-14T21:13:44Z" finished-at="2019-06-14T21:13:44Z">
+      <class name="hw1.SubtractTest">
+        <test-method status="PASS" signature="classUnderTestInit()[pri:0, instance:hw1.SubtractTest@96532d6]" name="classUnderTestInit" is-config="true" duration-ms="0" started-at="2019-06-14T21:13:44Z" finished-at="2019-06-14T21:13:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classUnderTestInit -->
+        <test-method status="PASS" signature="doubleSubtractTest(double, double, double)[pri:0, instance:hw1.SubtractTest@96532d6]" name="doubleSubtractTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="double-subtract-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[10.0]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[-10.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doubleSubtractTest -->
+        <test-method status="PASS" signature="doubleSubtractTest(double, double, double)[pri:0, instance:hw1.SubtractTest@96532d6]" name="doubleSubtractTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="double-subtract-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doubleSubtractTest -->
+        <test-method status="PASS" signature="doubleSubtractTest(double, double, double)[pri:0, instance:hw1.SubtractTest@96532d6]" name="doubleSubtractTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="double-subtract-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[-20.2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[-40.2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doubleSubtractTest -->
+        <test-method status="PASS" signature="longSubtractTest(long, long, long)[pri:0, instance:hw1.SubtractTest@96532d6]" name="longSubtractTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="long-subtract-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[-20]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[-40]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- longSubtractTest -->
+        <test-method status="PASS" signature="longSubtractTest(long, long, long)[pri:0, instance:hw1.SubtractTest@96532d6]" name="longSubtractTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="long-subtract-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- longSubtractTest -->
+        <test-method status="PASS" signature="longSubtractTest(long, long, long)[pri:0, instance:hw1.SubtractTest@96532d6]" name="longSubtractTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="long-subtract-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[-10]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- longSubtractTest -->
+      </class> <!-- hw1.SubtractTest -->
+      <class name="hw1.SumTest">
+        <test-method status="PASS" signature="classUnderTestInit()[pri:0, instance:hw1.SumTest@506e6d5e]" name="classUnderTestInit" is-config="true" duration-ms="26" started-at="2019-06-14T21:13:44Z" finished-at="2019-06-14T21:13:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classUnderTestInit -->
+        <test-method status="PASS" signature="doubleSumTest(double, double, double)[pri:0, instance:hw1.SumTest@506e6d5e]" name="doubleSumTest" duration-ms="2" started-at="2019-06-14T21:13:44Z" data-provider="double-sum-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[10.5]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20.7]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[31.2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doubleSumTest -->
+        <test-method status="PASS" signature="doubleSumTest(double, double, double)[pri:0, instance:hw1.SumTest@506e6d5e]" name="doubleSumTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="double-sum-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doubleSumTest -->
+        <test-method status="PASS" signature="doubleSumTest(double, double, double)[pri:0, instance:hw1.SumTest@506e6d5e]" name="doubleSumTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="double-sum-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[-20.3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20.3]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[0.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doubleSumTest -->
+        <test-method status="PASS" signature="longSumTest(long, long, long)[pri:0, instance:hw1.SumTest@506e6d5e]" name="longSumTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="long-sum-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[30]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- longSumTest -->
+        <test-method status="PASS" signature="longSumTest(long, long, long)[pri:0, instance:hw1.SumTest@506e6d5e]" name="longSumTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="long-sum-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- longSumTest -->
+        <test-method status="PASS" signature="longSumTest(long, long, long)[pri:0, instance:hw1.SumTest@506e6d5e]" name="longSumTest" duration-ms="0" started-at="2019-06-14T21:13:44Z" data-provider="long-sum-provider" finished-at="2019-06-14T21:13:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[-20]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- longSumTest -->
+      </class> <!-- hw1.SumTest -->
+    </test> <!-- Sum and subtract -->
+  </suite> <!-- Sum and subtract -->
+</testng-results>
