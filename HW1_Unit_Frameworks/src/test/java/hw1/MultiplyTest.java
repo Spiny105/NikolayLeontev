@@ -1,5 +1,6 @@
 package hw1;
 
+// TODO Unused import
 import hw1.CalculatorTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -29,6 +30,7 @@ public class MultiplyTest extends CalculatorTest {
     }
 
     @Test(dataProvider = "long-multiply-provider")
+    // TODO What is the Java Code Convention for the methods input parameters?
     public void longMultiplyTest(long operand_1, long operand_2, long expected){
 
         long actual = calculator.mult(operand_1, operand_2);
@@ -37,6 +39,7 @@ public class MultiplyTest extends CalculatorTest {
     }
 
     @Test(dataProvider = "double-multiply-provider")
+    // TODO What is the Java Code Convention for the methods input parameters?
     public void doubleMultiplyTest(double operand_1, double operand_2, double expected){
 
         double actual = calculator.mult(operand_1, operand_2);

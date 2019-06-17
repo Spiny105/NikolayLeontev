@@ -8,6 +8,13 @@
     <artifactId>homework_1</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- TODO
+            1. Where is file gitignore?
+            2. Why is target folder in the git?
+            3. Where is maven profiles? Please read requirements carefully
+            4. Why is in the root git folder HW1_Unit_Frameworks folder?
+            5. How I could run other suites?
+    -->
     <properties>
         <java.version>1.8</java.version>
 

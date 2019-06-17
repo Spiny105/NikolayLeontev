@@ -1,5 +1,6 @@
 package hw1;
 
+// TODO Unused imports
 import com.epam.tat.module4.Calculator;
 import hw1.CalculatorTest;
 import org.testng.annotations.BeforeClass;
@@ -33,12 +34,14 @@ public class SumTest extends CalculatorTest {
 
 
     @Test(dataProvider = "long-sum-provider")
+    // TODO What is the Java Code Convention for the methods input parameters?
     public void longSumTest(long operand_1, long operand_2, long expected){
         long actual = calculator.sum(operand_1, operand_2);
         assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "double-sum-provider")
+    // TODO What is the Java Code Convention for the methods input parameters?
     public void doubleSumTest(double operand_1, double operand_2, double expected){
         double actual = calculator.sum(operand_1, operand_2);
         assertEquals(actual, expected);
