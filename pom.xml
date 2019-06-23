@@ -18,13 +18,16 @@
     </properties>
 
     <profiles>
+
+        <!--HW1 profiles-->
+
         <profile>
             <id>calculator-sum-and-subtract-test</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/sumAndSubtractTest.xml</suite.xml>
+                <suite.xml>src/test/resources/hw1/sumAndSubtractTest.xml</suite.xml>
             </properties>
         </profile>
 
@@ -34,7 +37,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/allTests.xml</suite.xml>
+                <suite.xml>src/test/resources/hw1/allTests.xml</suite.xml>
             </properties>
         </profile>
 
@@ -44,9 +47,33 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/multiplyAndDivideTest.xml</suite.xml>
+                <suite.xml>src/test/resources/hw1/multiplyAndDivideTest.xml</suite.xml>
             </properties>
         </profile>
+
+        <!--HW2 profiles-->
+
+        <profile>
+            <id>selenium-ex1</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw2/ex1.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>selenium-ex2</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw2/ex2.xml</suite.xml>
+            </properties>
+        </profile>
+
+
     </profiles>
 
     <dependencies>
