@@ -1,6 +1,6 @@
-package hw2.ex2;
+package hw3.ex2;
 
-import hw2.BaseTest;
+import hw3.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -12,7 +12,7 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class WebTest extends BaseTest{
+public class WebTest extends BaseTest {
 
     @Test
     public void testScenario(){

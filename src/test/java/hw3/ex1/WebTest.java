@@ -1,6 +1,6 @@
-package hw2.ex1;
+package hw3.ex1;
 
-import hw2.BaseTest;
+import hw3.BaseTest;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
