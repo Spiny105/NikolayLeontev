@@ -25,9 +25,12 @@ public class WebTest extends BaseTest {
         assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
 
         //Assert Browser title
+        // TODO It could be extracted to separate method
         assertEquals(driver.getTitle(), "Home Page");
 
         //Assert header section
+        // TODO elements
+        // TODO Is this variable required here?
         List<String> ellements = Arrays.asList("Home", "Service", "Contact form", "Metals & Colors");
         checkEllementsIsDisplayed(ellements);
 

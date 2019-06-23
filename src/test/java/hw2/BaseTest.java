@@ -20,6 +20,7 @@ public class BaseTest {
 
     @BeforeSuite
     public void setUpDriverPath() {
+        // TODO What is the difference between first and second driver set up?
         System.setProperty("webdriver.chrome.driver",
                 this.getClass().getClassLoader().getResource("driver/chromedriver.exe").getPath());
         System.setProperty("webdriver.chrome.driver",
@@ -30,6 +31,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
+        // TODO What is the purpose create instance SoftAssert  class here?
         SoftAssert softAssert = new SoftAssert();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -49,6 +51,7 @@ public class BaseTest {
         driver.findElement(By.xpath("//button[@id='login-button']")).click();
     }
 
+    // TODO checkElementsAreDisplayed instead of checkEllementsIsDisplayed
     protected void checkEllementsIsDisplayed(List<String> elementsText){
 
         SoftAssert softAssert = new SoftAssert();
@@ -58,6 +61,8 @@ public class BaseTest {
         softAssert.assertAll();
     }
 
+    // TODO checkElementsCount instead of checkEllementsCount
+    // TODO elementsClassName instead of ellementClassName
     protected void checkEllementsCount(String ellementClassName, int expectedCount){
         assertEquals(driver.findElements(By.className(ellementClassName)).size(), expectedCount);
     }
