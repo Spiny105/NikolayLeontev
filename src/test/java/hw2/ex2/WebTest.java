@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -18,7 +17,7 @@ public class WebTest extends BaseTest{
     public void testScenario(){
 
         //Assert Browser title
-        assertEquals(driver.getTitle(), "Home Page");
+        assertPageTitle("Home Page");
 
         //Login
         login("epam", "1234");
@@ -27,22 +26,21 @@ public class WebTest extends BaseTest{
         assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
 
         //Assert "Service" menu
-        // TODO It could be extracted to separate method
-        driver.findElement(By.linkText("Service")).click();
+        // TODO It could be extracted to separate method (fixed)
+        clickOnElement("Service");
 
-        // TODO elements
-        // TODO Is this variable required here?
-        List<String> ellements = Arrays.asList("Support", "Dates", "Complex Table",
-                "Simple Table", "Table with pages", "Different elements");
-        checkEllementsIsDisplayed(ellements);
+        // TODO elements (fixed)
+        // TODO Is this variable required here? (fixed)
+        checkElementsAreDisplayed(Arrays.asList("Support", "Dates", "Complex Table",
+                "Simple Table", "Table with pages", "Different elements"));
 
         //Open "Different Elements" page
-        driver.findElement(By.linkText("Different elements")).click();
+        clickOnElement("Different elements");
 
         //Assert counts of elements on "Different Elements" page
-        checkEllementsCount("label-checkbox", 4);
-        checkEllementsCount("label-radio", 4);
-        checkEllementsCount("colors", 1);
+        checkElementsCount("label-checkbox", 4);
+        checkElementsCount("label-radio", 4);
+        checkElementsCount("colors", 1);
 
         assertTrue(driver.findElement(By.xpath("//button[@value='Default Button']")).isDisplayed());
         assertTrue(driver.findElement(By.xpath("//input[@value='Button']")).isDisplayed());
@@ -71,21 +69,16 @@ public class WebTest extends BaseTest{
         boolean initialSelectionStatus = checkBox.isSelected();
         checkBox.click();
 
-        // TODO I think that !initialSelectionStatus could be used here
-        // TODO What is the purpose of the current if using?
-        if (initialSelectionStatus == false){
-            assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'" + visibleText + ": condition changed to true')]]")).isDisplayed());
-            // TODO Java code convention
-        }
-        else{
-            assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'" + visibleText + ": condition changed to false')]]")).isDisplayed());
-        }
+        // TODO I think that !initialSelectionStatus could be used here (fixed)
+        // TODO What is the purpose of the current if using? (The purpose of the current if using is assertation
+        // TODO by the same method in two situations. When unchecked checkbox was clicked, and when checked checkbox was clicked)
+        assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'" + visibleText + ": condition changed to " + !initialSelectionStatus + "')]]")).isDisplayed());
+        //TODO Java code convention (fixed)
     }
 
     private void checkRadio(String visibleText){
         WebElement radio = driver.findElement(By.xpath("//*[normalize-space(.) = '" + visibleText + "']"));
-//        TODO Is this variable required?
-        boolean initialSelectionStatus = radio.isSelected();
+//        TODO Is this variable required? (fixed)
         radio.click();
 
         assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'metal: value changed to  " + visibleText + "')]]")).isDisplayed());

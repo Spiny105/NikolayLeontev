@@ -20,19 +20,15 @@ public class BaseTest {
 
     @BeforeSuite
     public void setUpDriverPath() {
-        // TODO What is the difference between first and second driver set up?
-        System.setProperty("webdriver.chrome.driver",
-                this.getClass().getClassLoader().getResource("driver/chromedriver.exe").getPath());
+        // TODO What is the difference between first and second driver set up? (fixed)
         System.setProperty("webdriver.chrome.driver",
                 Paths.get("src/test/resources/driver/chromedriver.exe")
                         .toAbsolutePath().toString());
-
     }
 
     @BeforeMethod
     public void setUp() {
-        // TODO What is the purpose create instance SoftAssert  class here?
-        SoftAssert softAssert = new SoftAssert();
+        // TODO What is the purpose create instance SoftAssert  class here? (fixed)
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().deleteAllCookies();
@@ -51,8 +47,8 @@ public class BaseTest {
         driver.findElement(By.xpath("//button[@id='login-button']")).click();
     }
 
-    // TODO checkElementsAreDisplayed instead of checkEllementsIsDisplayed
-    protected void checkEllementsIsDisplayed(List<String> elementsText){
+    // TODO checkElementsAreDisplayed instead of checkEllementsIsDisplayed (fixed)
+    protected void checkElementsAreDisplayed(List<String> elementsText){
 
         SoftAssert softAssert = new SoftAssert();
         for (String element : elementsText) {
@@ -61,9 +57,15 @@ public class BaseTest {
         softAssert.assertAll();
     }
 
-    // TODO checkElementsCount instead of checkEllementsCount
-    // TODO elementsClassName instead of ellementClassName
-    protected void checkEllementsCount(String ellementClassName, int expectedCount){
-        assertEquals(driver.findElements(By.className(ellementClassName)).size(), expectedCount);
+    // TODO checkElementsCount instead of checkEllementsCount (fixed)
+    // TODO elementsClassName instead of ellementClassName (fixed)
+    protected void checkElementsCount(String elementsClassName, int expectedCount){
+        assertEquals(driver.findElements(By.className(elementsClassName)).size(), expectedCount);
+    }
+
+    protected void clickOnElement(String linkText){driver.findElement(By.linkText(linkText)).click();}
+
+    protected void assertPageTitle(String expectedTitle){
+        assertEquals(driver.getTitle(), expectedTitle);
     }
 }

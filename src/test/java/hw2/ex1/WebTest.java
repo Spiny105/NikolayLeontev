@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -16,7 +15,7 @@ public class WebTest extends BaseTest {
     public void testScenario() {
 
         //Assert Browser title
-        assertEquals(driver.getTitle(), "Home Page");
+        assertPageTitle("Home Page");
 
         //Login
         login("epam", "1234");
@@ -25,20 +24,19 @@ public class WebTest extends BaseTest {
         assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
 
         //Assert Browser title
-        // TODO It could be extracted to separate method
-        assertEquals(driver.getTitle(), "Home Page");
+        // TODO It could be extracted to separate method (fixed)
+        assertPageTitle("Home Page");
 
         //Assert header section
-        // TODO elements
-        // TODO Is this variable required here?
-        List<String> ellements = Arrays.asList("Home", "Service", "Contact form", "Metals & Colors");
-        checkEllementsIsDisplayed(ellements);
+        // TODO elements (fixed)
+        // TODO Is this variable required here? (fixed)
+        checkElementsAreDisplayed(Arrays.asList("Home", "Service", "Contact form", "Metals & Colors"));
 
         //Assert images count
-        checkEllementsCount("benefit-icon", 4);
+        checkElementsCount("benefit-icon", 4);
 
         //Assert texts
-        checkEllementsCount("benefit-txt", 4);
+        checkElementsCount("benefit-txt", 4);
 
         //Assert text of the main header
         assertEquals(driver.findElement(By.name("main-title")).getText(), "EPAM FRAMEWORK WISHES…");
