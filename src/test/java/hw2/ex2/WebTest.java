@@ -26,11 +26,8 @@ public class WebTest extends BaseTest{
         assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
 
         //Assert "Service" menu
-        // TODO It could be extracted to separate method (fixed)
         clickOnElement("Service");
 
-        // TODO elements (fixed)
-        // TODO Is this variable required here? (fixed)
         checkElementsAreDisplayed(Arrays.asList("Support", "Dates", "Complex Table",
                 "Simple Table", "Table with pages", "Different elements"));
 
@@ -69,16 +66,11 @@ public class WebTest extends BaseTest{
         boolean initialSelectionStatus = checkBox.isSelected();
         checkBox.click();
 
-        // TODO I think that !initialSelectionStatus could be used here (fixed)
-        // TODO What is the purpose of the current if using? (The purpose of the current if using is assertation
-        // TODO by the same method in two situations. When unchecked checkbox was clicked, and when checked checkbox was clicked)
         assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'" + visibleText + ": condition changed to " + !initialSelectionStatus + "')]]")).isDisplayed());
-        //TODO Java code convention (fixed)
     }
 
     private void checkRadio(String visibleText){
         WebElement radio = driver.findElement(By.xpath("//*[normalize-space(.) = '" + visibleText + "']"));
-//        TODO Is this variable required? (fixed)
         radio.click();
 
         assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'metal: value changed to  " + visibleText + "')]]")).isDisplayed());
