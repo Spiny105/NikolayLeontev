@@ -27,8 +27,11 @@ public class WebTest extends BaseTest{
         assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
 
         //Assert "Service" menu
+        // TODO It could be extracted to separate method
         driver.findElement(By.linkText("Service")).click();
 
+        // TODO elements
+        // TODO Is this variable required here?
         List<String> ellements = Arrays.asList("Support", "Dates", "Complex Table",
                 "Simple Table", "Table with pages", "Different elements");
         checkEllementsIsDisplayed(ellements);
@@ -68,8 +71,11 @@ public class WebTest extends BaseTest{
         boolean initialSelectionStatus = checkBox.isSelected();
         checkBox.click();
 
+        // TODO I think that !initialSelectionStatus could be used here
+        // TODO What is the purpose of the current if using?
         if (initialSelectionStatus == false){
             assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'" + visibleText + ": condition changed to true')]]")).isDisplayed());
+            // TODO Java code convention
         }
         else{
             assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'" + visibleText + ": condition changed to false')]]")).isDisplayed());
@@ -78,6 +84,7 @@ public class WebTest extends BaseTest{
 
     private void checkRadio(String visibleText){
         WebElement radio = driver.findElement(By.xpath("//*[normalize-space(.) = '" + visibleText + "']"));
+//        TODO Is this variable required?
         boolean initialSelectionStatus = radio.isSelected();
         radio.click();
 
