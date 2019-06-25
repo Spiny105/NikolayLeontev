@@ -24,12 +24,9 @@ public class WebTest extends BaseTest {
         assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
 
         //Assert Browser title
-        // TODO It could be extracted to separate method (fixed)
         assertPageTitle("Home Page");
 
         //Assert header section
-        // TODO elements (fixed)
-        // TODO Is this variable required here? (fixed)
         checkElementsAreDisplayed(Arrays.asList("Home", "Service", "Contact form", "Metals & Colors"));
 
         //Assert images count
