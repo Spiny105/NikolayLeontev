@@ -73,6 +73,26 @@
             </properties>
         </profile>
 
+        <!--HW3 profiles-->
+        <profile>
+            <id>steps-ex1</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw3/ex1.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>steps-ex2</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw3/ex2.xml</suite.xml>
+            </properties>
+        </profile>
 
     </profiles>
 

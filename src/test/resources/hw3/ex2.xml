@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="steps ex2">
+
+    <test name="stepsEx2">
+        <classes>
+            <class name="hw3.ex2.WebTest"/>
+        </classes>
+    </test>
+
+</suite>

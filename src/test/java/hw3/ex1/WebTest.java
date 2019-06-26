@@ -1,66 +1,64 @@
 package hw3.ex1;
 
 import hw3.BaseTest;
-import org.openqa.selenium.By;
+import hw3.steps.HomePageSteps;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
-import java.util.List;
-
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class WebTest extends BaseTest {
+
+    private HomePageSteps homePageSteps;
+
+    @BeforeMethod
+    @Override
+    public void setUp() {
+        super.setUp();
+        homePageSteps = new HomePageSteps(driver);
+    }
 
     @Test
     public void testScenario() {
 
         //Assert Browser title
-        assertEquals(driver.getTitle(), "Home Page");
+        homePageSteps.assertPageTitle("Home Page");
 
         //Login
-        login("epam", "1234");
+        homePageSteps.login("epam", "1234");
 
         //Assert user name
-        assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
+        homePageSteps.assertUserName("PITER CHAILOVSKII");
 
         //Assert Browser title
-        assertEquals(driver.getTitle(), "Home Page");
+        homePageSteps.assertPageTitle("Home Page");
 
         //Assert header section
-        List<String> ellements = Arrays.asList("Home", "Service", "Contact form", "Metals & Colors");
-        checkEllementsIsDisplayed(ellements);
+        homePageSteps.checkLeftSideElementsAreDisplayed(Arrays.asList("Home", "Service", "Contact form", "Metals & Colors"));
 
         //Assert images count
-        checkEllementsCount("benefit-icon", 4);
+        homePageSteps.assertImagesCount(4);
 
         //Assert texts
-        checkEllementsCount("benefit-txt", 4);
+        homePageSteps.assertTextsCountUnderImages(4);
 
         //Assert text of the main header
-        assertEquals(driver.findElement(By.name("main-title")).getText(), "EPAM FRAMEWORK WISHES…");
-        assertTrue(driver.findElement(By.name("jdi-text")).getText().contains("LOREM IPSUM"));
+        homePageSteps.assertTextsOfMainHeaders();
 
         //Assert that there is iframe in the page
-        assertTrue(driver.findElement(By.id("iframe")).isDisplayed());
-
-        //Switch to iframe
-        driver.switchTo().frame("iframe");
+        homePageSteps.assertIFrameIsDisplayed();
 
         //Assert epam-logo in the frame
-        assertTrue(driver.findElement(By.id("epam_logo")).isDisplayed());
-
-        //Switch to original page
-        driver.switchTo().defaultContent();
+        homePageSteps.assertEpamLogoInIFrame();
 
         //Assert a text and URL of the sub header
-        assertEquals(driver.findElement(By.xpath("//a[@href = 'https://github.com/epam/JDI']")).getText(), "JDI GITHUB");
+        homePageSteps.assertSubHeader();
 
         //Assert that there is Left Section
-        assertTrue(driver.findElement(By.id("mCSB_1")).isDisplayed());
+        homePageSteps.assertLeftSection();
 
         //Assert that there is Footer
-        assertTrue(driver.findElement(By.className("footer-bg")).isDisplayed());
+        homePageSteps.assertFooter();
     }
 
 }

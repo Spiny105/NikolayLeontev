@@ -1,94 +1,59 @@
 package hw3.ex2;
 
 import hw3.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+import hw3.enums.DifferentElementsPageCheckBoxes;
+import hw3.enums.DifferentElementsPageDropdownItems;
+import hw3.enums.DifferentElementsPageRadios;
+import hw3.steps.DifferentElementsPageSteps;
+import hw3.steps.HomePageSteps;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.List;
+public class WebTest extends BaseTest{
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+    private HomePageSteps homePageSteps;
+    private DifferentElementsPageSteps differentElementsPageSteps;
 
-public class WebTest extends BaseTest {
+    @BeforeMethod
+    @Override
+    public void setUp() {
+        super.setUp();
+        homePageSteps = new HomePageSteps(driver);
+        differentElementsPageSteps = new DifferentElementsPageSteps(driver);
+    }
 
     @Test
-    public void testScenario(){
+    public void testScenario() {
 
         //Assert Browser title
-        assertEquals(driver.getTitle(), "Home Page");
+        homePageSteps.assertPageTitle("Home Page");
 
         //Login
-        login("epam", "1234");
+        homePageSteps.login("epam", "1234");
 
         //Assert user name
-        assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
+        homePageSteps.assertUserName("PITER CHAILOVSKII");
 
         //Assert "Service" menu
-        driver.findElement(By.linkText("Service")).click();
-
-        List<String> ellements = Arrays.asList("Support", "Dates", "Complex Table",
-                "Simple Table", "Table with pages", "Different elements");
-        checkEllementsIsDisplayed(ellements);
+        homePageSteps.assertServiceSubcategoryInHeader();
 
         //Open "Different Elements" page
-        driver.findElement(By.linkText("Different elements")).click();
+        homePageSteps.goToDifferentElementsPage();
 
         //Assert counts of elements on "Different Elements" page
-        checkEllementsCount("label-checkbox", 4);
-        checkEllementsCount("label-radio", 4);
-        checkEllementsCount("colors", 1);
+        differentElementsPageSteps.checkElementsCountOnPage();
 
-        assertTrue(driver.findElement(By.xpath("//button[@value='Default Button']")).isDisplayed());
-        assertTrue(driver.findElement(By.xpath("//input[@value='Button']")).isDisplayed());
-
-        //Assert right and left sections
-        assertTrue(driver.findElement(By.id("mCSB_2")).isDisplayed(), "right section not fount");
-        assertTrue(driver.findElement(By.id("mCSB_1")).isDisplayed(), "left section not found");
-
-        //Assert chechboxes
-        checkCheckBox("Water");
-        checkCheckBox("Wind");
+        //Assert checkboxes
+        differentElementsPageSteps.assertCheckBox(DifferentElementsPageCheckBoxes.WATER);
+        differentElementsPageSteps.assertCheckBox(DifferentElementsPageCheckBoxes.WIND);
 
         //Assert radio
-        checkRadio("Selen");
-
+        differentElementsPageSteps.checkRadio(DifferentElementsPageRadios.SELEN);
         //Assert dropdown
-        checkDropDown("Yellow");
+        differentElementsPageSteps.assertDropDown(DifferentElementsPageDropdownItems.YELLOW);
 
         //Assert checkboxes again
-        checkCheckBox("Water");
-        checkCheckBox("Wind");
-    }
-
-    private void checkCheckBox(String visibleText){
-        WebElement checkBox = driver.findElement(By.xpath("//*[normalize-space(.) = '" + visibleText + "']"));
-        boolean initialSelectionStatus = checkBox.isSelected();
-        checkBox.click();
-
-        if (initialSelectionStatus == false){
-            assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'" + visibleText + ": condition changed to true')]]")).isDisplayed());
-        }
-        else{
-            assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'" + visibleText + ": condition changed to false')]]")).isDisplayed());
-        }
-    }
-
-    private void checkRadio(String visibleText){
-        WebElement radio = driver.findElement(By.xpath("//*[normalize-space(.) = '" + visibleText + "']"));
-        boolean initialSelectionStatus = radio.isSelected();
-        radio.click();
-
-        assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'metal: value changed to  " + visibleText + "')]]")).isDisplayed());
-    }
-
-    private void checkDropDown(String selectedVisibleText){
-        WebElement dropDown = driver.findElement(By.xpath("//select[@class = 'uui-form-element']"));
-        Select select = new Select(dropDown);
-        dropDown.click();
-        select.selectByVisibleText(selectedVisibleText);
-        assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'Colors: value changed to " + selectedVisibleText + "')]]")).isDisplayed());
+        differentElementsPageSteps.assertCheckBox(DifferentElementsPageCheckBoxes.WATER);
+        differentElementsPageSteps.assertCheckBox(DifferentElementsPageCheckBoxes.WIND);
     }
 }

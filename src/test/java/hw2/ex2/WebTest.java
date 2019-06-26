@@ -71,6 +71,7 @@ public class WebTest extends BaseTest{
 
     private void checkRadio(String visibleText){
         WebElement radio = driver.findElement(By.xpath("//*[normalize-space(.) = '" + visibleText + "']"));
+
         radio.click();
 
         assertTrue(driver.findElement(By.xpath("//li[text()[contains(.,'metal: value changed to  " + visibleText + "')]]")).isDisplayed());
