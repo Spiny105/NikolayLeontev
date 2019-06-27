@@ -1,11 +1,14 @@
 package hw3.ex1;
 
 import hw3.BaseTest;
+import hw3.enums.LeftSideMenu;
 import hw3.steps.HomePageSteps;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class WebTest extends BaseTest {
 
@@ -25,16 +28,23 @@ public class WebTest extends BaseTest {
         homePageSteps.assertPageTitle("Home Page");
 
         //Login
-        homePageSteps.login("epam", "1234");
+        // TODO user should be read from the properties filed (fixed)
+        homePageSteps.login(login, password);
 
         //Assert user name
-        homePageSteps.assertUserName("PITER CHAILOVSKII");
+        homePageSteps.assertUserName(userName);
 
         //Assert Browser title
         homePageSteps.assertPageTitle("Home Page");
 
         //Assert header section
-        homePageSteps.checkLeftSideElementsAreDisplayed(Arrays.asList("Home", "Service", "Contact form", "Metals & Colors"));
+        // TODO Should be extracted to the enum
+        List<LeftSideMenu> leftSideMenuItems = new ArrayList<>();
+        leftSideMenuItems.add(LeftSideMenu.HOME);
+        leftSideMenuItems.add(LeftSideMenu.SERVICE);
+        leftSideMenuItems.add(LeftSideMenu.CONTACT_FORM);
+        leftSideMenuItems.add(LeftSideMenu.METALS_AND_COLORS);
+        homePageSteps.checkLeftSideElementsAreDisplayed(leftSideMenuItems);
 
         //Assert images count
         homePageSteps.assertImagesCount(4);

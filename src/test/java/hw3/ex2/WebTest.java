@@ -29,10 +29,11 @@ public class WebTest extends BaseTest{
         homePageSteps.assertPageTitle("Home Page");
 
         //Login
-        homePageSteps.login("epam", "1234");
+        // TODO user should be read from the properties filed (fixed)
+        homePageSteps.login(login, password);
 
         //Assert user name
-        homePageSteps.assertUserName("PITER CHAILOVSKII");
+        homePageSteps.assertUserName(userName);
 
         //Assert "Service" menu
         homePageSteps.assertServiceSubcategoryInHeader();

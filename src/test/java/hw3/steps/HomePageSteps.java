@@ -35,13 +35,13 @@ public class HomePageSteps {
         assertEquals(homePage.getUserName(), expectedUserName);
     }
 
-    public void checkLeftSideElementsAreDisplayed(List<String> elementsText){
+    public void checkLeftSideElementsAreDisplayed(List<LeftSideMenu> elementsText){
 
         List<String> leftSideBareElements = homePage.getLeftSidebarItems().stream().map(s->s.getText()).collect(Collectors.toList());
 
         SoftAssert softAssert = new SoftAssert();
-        for (String element : elementsText) {
-            softAssert.assertTrue(leftSideBareElements.contains(element), "element" + element + "not found");
+        for (LeftSideMenu element : elementsText) {
+            softAssert.assertTrue(leftSideBareElements.contains(element.getName()), "element" + element.getName() + "not found");
         }
         softAssert.assertAll();
     }

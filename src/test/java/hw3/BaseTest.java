@@ -6,10 +6,18 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Paths;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
+
+    protected String userName;
+    protected String password;
+    protected String login;
 
     protected WebDriver driver;
 
@@ -26,6 +34,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().deleteAllCookies();
         driver.get("https://epam.github.io/JDI");
+
+        readUserFromFile(".\\src\\test\\resources\\properties\\user.properties");
     }
 
     @AfterMethod
@@ -33,4 +43,20 @@ public class BaseTest {
         driver.close();
     }
 
+    public void readUserFromFile(String filePath) {
+        Properties prop = new Properties();
+
+        try (InputStream input = new FileInputStream(filePath)) {
+            if (input == null) {
+                System.out.println("Sorry, unable to find config.properties");
+            }
+            prop.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        userName = prop.getProperty("user.user.name");
+        login = prop.getProperty("user.name");
+        password = prop.getProperty("user.password");
+    }
 }

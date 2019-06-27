@@ -12,10 +12,21 @@ import java.util.List;
 
 public abstract class BasePage {
 
+    @FindBy(id = "user-icon")
+    protected WebElement userIcon;
+
+    @FindBy(id = "name")
+    protected WebElement loginNameTextField;
+
+    protected WebElement password;
+
+    @FindBy(xpath = "//button[@id='login-button']")
+    protected WebElement loginButton;
+
     @FindBy(xpath = "//*[@id=\"mCSB_1_container\"]//ul[@class = 'sub']//a")
     protected List<WebElement> serviceItems;
 
-    @FindBy(xpath = "//*[@id=\"mCSB_1_container\"]/ul[@class= 'sub']//a")
+    @FindBy(xpath = "//*[@id=\"mCSB_1_container\"]//span")
     protected List<WebElement> leftSidebarItems;
 
     @FindBy(id = "mCSB_1")
@@ -29,6 +40,14 @@ public abstract class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    // TODO Could be extarted to BaseClass (fixed)
+    public void login(String userName, String password) {
+        userIcon.click();
+        loginNameTextField.sendKeys(userName);
+        this.password.sendKeys(password);
+        loginButton.click();
     }
 
     public void clickLeftSideMenu(LeftSideMenu menuItem) {

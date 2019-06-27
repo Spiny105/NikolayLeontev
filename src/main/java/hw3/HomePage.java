@@ -30,26 +30,8 @@ public class HomePage extends BasePage{
     @FindBy(className = "benefit-txt")
     private List<WebElement> benefitTexts;
 
-    @FindBy(id = "user-icon")
-    private WebElement userIcon;
-
-    @FindBy(id = "name")
-    private WebElement loginNameTextField;
-
-    private WebElement password;
-
-    @FindBy(xpath = "//button[@id='login-button']")
-    private WebElement loginButton;
-
     public HomePage(WebDriver driver) {
         super(driver);
-    }
-
-    public void login(String userName, String password) {
-        userIcon.click();
-        loginNameTextField.sendKeys(userName);
-        this.password.sendKeys(password);
-        loginButton.click();
     }
 
     public List<WebElement> getBenefitIcons()
