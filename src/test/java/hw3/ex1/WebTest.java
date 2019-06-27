@@ -25,7 +25,6 @@ public class WebTest extends BaseTest {
         homePageSteps.assertPageTitle("Home Page");
 
         //Login
-        // TODO user should be read from the properties filed
         homePageSteps.login("epam", "1234");
 
         //Assert user name
@@ -35,7 +34,6 @@ public class WebTest extends BaseTest {
         homePageSteps.assertPageTitle("Home Page");
 
         //Assert header section
-        // TODO Should be extracted to the enum
         homePageSteps.checkLeftSideElementsAreDisplayed(Arrays.asList("Home", "Service", "Contact form", "Metals & Colors"));
 
         //Assert images count

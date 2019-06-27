@@ -45,7 +45,6 @@ public class HomePage extends BasePage{
         super(driver);
     }
 
-    // TODO Could be extarted to BaseClass
     public void login(String userName, String password) {
         userIcon.click();
         loginNameTextField.sendKeys(userName);
