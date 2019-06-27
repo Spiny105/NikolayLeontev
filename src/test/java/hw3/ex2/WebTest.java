@@ -29,6 +29,7 @@ public class WebTest extends BaseTest{
         homePageSteps.assertPageTitle("Home Page");
 
         //Login
+        // TODO user should be read from the properties filed
         homePageSteps.login("epam", "1234");
 
         //Assert user name
