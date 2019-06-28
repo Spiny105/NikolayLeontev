@@ -42,7 +42,6 @@ public abstract class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    // TODO Could be extarted to BaseClass (fixed)
     public void login(String userName, String password) {
         userIcon.click();
         loginNameTextField.sendKeys(userName);
