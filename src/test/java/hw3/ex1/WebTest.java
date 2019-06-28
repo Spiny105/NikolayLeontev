@@ -28,7 +28,6 @@ public class WebTest extends BaseTest {
         homePageSteps.assertPageTitle("Home Page");
 
         //Login
-        // TODO user should be read from the properties filed (fixed)
         homePageSteps.login(login, password);
 
         //Assert user name
@@ -38,7 +37,6 @@ public class WebTest extends BaseTest {
         homePageSteps.assertPageTitle("Home Page");
 
         //Assert header section
-        // TODO Should be extracted to the enum
         List<LeftSideMenu> leftSideMenuItems = new ArrayList<>();
         leftSideMenuItems.add(LeftSideMenu.HOME);
         leftSideMenuItems.add(LeftSideMenu.SERVICE);
