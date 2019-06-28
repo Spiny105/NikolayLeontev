@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="selenide ex1">
+
+    <test name="selenideEx1">
+        <classes>
+            <class name="hw4.ex1.WebTest"/>
+        </classes>
+    </test>
+
+</suite>

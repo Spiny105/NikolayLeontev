@@ -94,6 +94,28 @@
             </properties>
         </profile>
 
+        <!--HW4 profiles-->
+
+        <profile>
+            <id>selenide-ex1</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw4/ex1.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>selenide-ex2</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw4/ex2.xml</suite.xml>
+            </properties>
+        </profile>
+
     </profiles>
 
     <dependencies>
@@ -117,6 +139,12 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>5.2.3</version>
         </dependency>
 
     </dependencies>
