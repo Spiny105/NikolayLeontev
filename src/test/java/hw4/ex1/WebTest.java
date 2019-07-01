@@ -1,8 +1,9 @@
 package hw4.ex1;
 
-import hw3.enums.LeftSideMenu;
+import hw4.enums.LeftSideMenu;
 import hw4.BaseTest;
 import hw4.steps.HomePageSteps;
+import hw4.steps.TableWithPagesPageSteps;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -12,12 +13,14 @@ import java.util.List;
 public class WebTest extends BaseTest {
 
     private HomePageSteps homePageSteps;
+    private TableWithPagesPageSteps tableWithPagesPageSteps;
 
     @BeforeMethod
     @Override
     public void setUp() {
         super.setUp();
-        homePageSteps = new HomePageSteps(driver);
+        tableWithPagesPageSteps = new TableWithPagesPageSteps("https://epam.github.io/JDI");
+        homePageSteps = new HomePageSteps("https://epam.github.io/JDI");
     }
 
     @Test
@@ -43,29 +46,33 @@ public class WebTest extends BaseTest {
         leftSideMenuItems.add(LeftSideMenu.METALS_AND_COLORS);
         homePageSteps.checkLeftSideElementsAreDisplayed(leftSideMenuItems);
 
-        //Assert images count
-        homePageSteps.assertImagesCount(4);
+        //Assert "Service" subcategory items
+        homePageSteps.assertServiceSubcategoryInHeader();
 
-        //Assert texts
-        homePageSteps.assertTextsCountUnderImages(4);
+        //Go to "Table with pages" page
+        homePageSteps.goToTableWithPagesPage();
 
-        //Assert text of the main header
-        homePageSteps.assertTextsOfMainHeaders();
+        //Assert "Show Entries" dropdown value
+        tableWithPagesPageSteps.assertShowEntriesDropDownValue("5");
 
-        //Assert that there is iframe in the page
-        homePageSteps.assertIFrameIsDisplayed();
+        //Assert that there is Right section
+        tableWithPagesPageSteps.assertRightSection();
 
-        //Assert epam-logo in the frame
-        homePageSteps.assertEpamLogoInIFrame();
+        //Assert that there is Left section
+        tableWithPagesPageSteps.assertLeftSection();
 
-        //Assert a text and URL of the sub header
-        homePageSteps.assertSubHeader();
+        //Select new value for the entries in the dropdown list
+        tableWithPagesPageSteps.selectNewValueInDropdownList("10");
 
-        //Assert that there is Left Section
-        homePageSteps.assertLeftSection();
+        //Assert table size
+        tableWithPagesPageSteps.assertTableRowsCount(10);
 
-        //Assert that there is Footer
-        homePageSteps.assertFooter();
+        //Type in “Search” text field
+        String wordForSearching = "Custom";
+        tableWithPagesPageSteps.typeTextInSearchField(wordForSearching);
+
+        //Asserts records in the table
+        tableWithPagesPageSteps.assertAllRecordsInTableContainsText(wordForSearching);
     }
 
 }

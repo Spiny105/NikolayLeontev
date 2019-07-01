@@ -1,13 +1,17 @@
 package hw4.steps;
 
-import hw3.HomePage;
-import hw3.enums.LeftSideMenu;
-import hw3.enums.ServiceElementsMenu;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+import hw4.HomePage;
+import hw4.enums.LeftSideMenu;
+import hw4.enums.ServiceElementsMenu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.asserts.SoftAssert;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,25 +23,25 @@ public class HomePageSteps {
 
     private HomePage homePage;
 
-    public HomePageSteps(WebDriver driver){
-        homePage = PageFactory.initElements(driver, HomePage.class);
+    public HomePageSteps(String url) {
+        homePage = Selenide.open(url, HomePage.class);
     }
 
-    public void assertPageTitle(String expectedTitle){
-        assertEquals(homePage.getPageTitle(), expectedTitle);
+    public void assertPageTitle(String expectedTitle) {
+        assert Selenide.title().contains(expectedTitle);
     }
 
-    public void login(String userName, String login){
+    public void login(String userName, String login) {
         homePage.login(userName, login);
     }
 
-    public void assertUserName(String expectedUserName){
-        assertEquals(homePage.getUserName(), expectedUserName);
+    public void assertUserName(String expectedUserName) {
+        homePage.getUserName().shouldHave(Condition.text(expectedUserName));
     }
 
-    public void checkLeftSideElementsAreDisplayed(List<LeftSideMenu> elementsText){
+    public void checkLeftSideElementsAreDisplayed(List<LeftSideMenu> elementsText) {
 
-        List<String> leftSideBareElements = homePage.getLeftSidebarItems().stream().map(s->s.getText()).collect(Collectors.toList());
+        List<String> leftSideBareElements = homePage.getLeftSidebarItems().stream().map(s -> s.getText()).collect(Collectors.toList());
 
         SoftAssert softAssert = new SoftAssert();
         for (LeftSideMenu element : elementsText) {
@@ -46,66 +50,78 @@ public class HomePageSteps {
         softAssert.assertAll();
     }
 
-    void checkServiceSubcategoryElementsAreDisplayed(List<String> elementsText){
+    void checkServiceSubcategoryElementsAreDisplayed(List<ServiceElementsMenu> elementsText) {
 
-        List<String> serviceElements = homePage.getServiceItems().stream().map(s->s.getText()).collect(Collectors.toList());
+        List<String> serviceElements = homePage.getServiceItems().stream().map(s -> s.getText()).collect(Collectors.toList());
 
         SoftAssert softAssert = new SoftAssert();
-        for (String element : elementsText) {
-            softAssert.assertTrue(serviceElements.contains(element), "element" + element + "not found");
+        for (ServiceElementsMenu element : elementsText) {
+            softAssert.assertTrue(serviceElements.contains(element.getName()));
         }
         softAssert.assertAll();
     }
 
-    public void assertImagesCount(int expectedCount){
+    public void assertImagesCount(int expectedCount) {
         int actualBenefitIconsCount = homePage.getBenefitIcons().size();
         assertEquals(actualBenefitIconsCount, expectedCount, "Wrong number of benefit icons");
     }
 
-    public void assertTextsCountUnderImages(int expectedCount){
-        int actualBenefitIconsCount = homePage.getBenefitTexts().size();
-        assertEquals(actualBenefitIconsCount, expectedCount, "Wrong number of benefit texts");
+    public void assertTextsCountUnderImages(int expectedCount) {
+        homePage.getBenefitTexts().shouldHaveSize(expectedCount);
     }
 
-    public void assertTextsOfMainHeaders(){
+    public void assertTextsOfMainHeaders() {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(homePage.getMainHeaderText(), "EPAM FRAMEWORK WISHES…");
         softAssert.assertTrue(homePage.getPageText().contains("LOREM IPSUM"));
         softAssert.assertAll();
     }
 
-    public void assertIFrameIsDisplayed(){
-        assertTrue(homePage.getiFrame().isDisplayed());
+    public void assertIFrameIsDisplayed() {
+        homePage.getiFrame().shouldBe(Condition.visible);
     }
 
-    public void assertEpamLogoInIFrame(){
+    public void assertEpamLogoInIFrame() {
         homePage.switchToIFrame();
-        assertTrue(homePage.getEpamLogo().isDisplayed());
+        homePage.getEpamLogo().shouldBe(Condition.visible);
         homePage.switchToOriginalPage();
     }
 
-    public void assertSubHeader(){
-        WebElement subHeader = homePage.getSubHeader();
-        assertTrue(subHeader.isDisplayed());
-        assertEquals(subHeader.getText(), "JDI GITHUB");
+    public void assertSubHeader() {
+        homePage.getSubHeader().shouldBe(Condition.visible);
+        homePage.getSubHeader().shouldHave(Condition.text("JDI GITHUB"));
     }
 
-    public void assertLeftSection(){
-        assertTrue(homePage.getLeftSection().isDisplayed());
+    public void assertLeftSection() {
+        homePage.getLeftSection().shouldBe(Condition.visible);
     }
 
-    public void assertFooter(){
-        assertTrue(homePage.getFooter().isDisplayed());
+    public void assertFooter() {
+        homePage.getFooter().shouldBe(Condition.visible);
     }
 
-    public void assertServiceSubcategoryInHeader(){
+    public void assertServiceSubcategoryInHeader() {
         homePage.clickLeftSideMenu(LeftSideMenu.SERVICE);
-        checkServiceSubcategoryElementsAreDisplayed(Arrays.asList("Support", "Dates", "Complex Table",
-                "Simple Table", "Table with pages", "Different elements"));
+        List<ServiceElementsMenu> serviceSubmenuItems = new ArrayList<>();
+        serviceSubmenuItems.add(ServiceElementsMenu.SUPPORT);
+        serviceSubmenuItems.add(ServiceElementsMenu.DATES);
+        serviceSubmenuItems.add(ServiceElementsMenu.COMPLEX_TABLE);
+        serviceSubmenuItems.add(ServiceElementsMenu.SIMPLE_TABLE);
+        serviceSubmenuItems.add(ServiceElementsMenu.TABLE_WITH_PAGES);
+        serviceSubmenuItems.add(ServiceElementsMenu.DIFFERENT_ELEMENTS);
+        checkServiceSubcategoryElementsAreDisplayed(serviceSubmenuItems);
 
     }
 
-    public void goToDifferentElementsPage(){
+    public void goToDifferentElementsPage() {
         homePage.clickOnServiceSubcategoryItem(ServiceElementsMenu.DIFFERENT_ELEMENTS);
+    }
+
+    public void goToTableWithPagesPage() {
+        homePage.clickOnServiceSubcategoryItem(ServiceElementsMenu.TABLE_WITH_PAGES);
+    }
+
+    public void goToMetalAndColorsPage() {
+        homePage.clickLeftSideMenu(LeftSideMenu.METALS_AND_COLORS);
     }
 }

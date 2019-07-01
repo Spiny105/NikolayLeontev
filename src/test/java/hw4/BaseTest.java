@@ -1,5 +1,6 @@
 package hw4;
 
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -19,28 +20,14 @@ public class BaseTest {
     protected String password;
     protected String login;
 
-    protected WebDriver driver;
-
-    @BeforeSuite
-    public void setUpDriverPath() {
-        System.setProperty("webdriver.chrome.driver",
-                Paths.get("src/test/resources/driver/chromedriver.exe")
-                        .toAbsolutePath().toString());
-    }
-
     @BeforeMethod
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().deleteAllCookies();
-        driver.get("https://epam.github.io/JDI");
-
         readUserFromFile(".\\src\\test\\resources\\properties\\user.properties");
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.close();
+        Selenide.close();
     }
 
     public void readUserFromFile(String filePath) {
