@@ -1,8 +1,8 @@
 package hw4.ex2;
 
 import hw4.BaseTest;
-import hw4.enums.DifferentElements;
 import hw4.enums.Colors;
+import hw4.enums.DifferentElements;
 import hw4.enums.Metals;
 import hw4.enums.Vegetables;
 import hw4.steps.HomePageSteps;

@@ -3,11 +3,9 @@ package hw4.steps;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.conditions.Visible;
-import hw4.enums.DifferentElements;
 import hw4.MetalAndColorPage;
 import hw4.enums.Colors;
+import hw4.enums.DifferentElements;
 import hw4.enums.Metals;
 import hw4.enums.Vegetables;
 

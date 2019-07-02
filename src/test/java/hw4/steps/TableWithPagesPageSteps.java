@@ -4,10 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import hw4.TableWithPagesPage;
 
-import static com.codeborne.selenide.Condition.matchText;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static org.testng.Assert.assertTrue;
+import static com.codeborne.selenide.Condition.*;
 
 public class TableWithPagesPageSteps {
 

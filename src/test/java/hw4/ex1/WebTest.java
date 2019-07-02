@@ -1,7 +1,7 @@
 package hw4.ex1;
 
-import hw4.enums.LeftSideMenu;
 import hw4.BaseTest;
+import hw4.enums.LeftSideMenu;
 import hw4.steps.HomePageSteps;
 import hw4.steps.TableWithPagesPageSteps;
 import org.testng.annotations.BeforeMethod;
