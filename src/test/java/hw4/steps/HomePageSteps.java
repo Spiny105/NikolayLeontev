@@ -22,6 +22,7 @@ public class HomePageSteps {
     }
 
     public void assertPageTitle(String expectedTitle) {
+        // TODO Why there is simple assert instead of assertEquals?
         assert Selenide.title().contains(expectedTitle);
     }
 
@@ -55,6 +56,7 @@ public class HomePageSteps {
         softAssert.assertAll();
     }
 
+    // TODO Is these unused method required here?
     public void assertImagesCount(int expectedCount) {
         int actualBenefitIconsCount = homePage.getBenefitIcons().size();
         assertEquals(actualBenefitIconsCount, expectedCount, "Wrong number of benefit icons");
@@ -107,6 +109,7 @@ public class HomePageSteps {
 
     }
 
+    // TODO Is this unused method required here?
     public void goToDifferentElementsPage() {
         homePage.clickOnServiceSubcategoryItem(ServiceElementsMenu.DIFFERENT_ELEMENTS);
     }

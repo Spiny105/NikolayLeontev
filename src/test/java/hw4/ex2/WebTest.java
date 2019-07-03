@@ -21,7 +21,7 @@ public class WebTest extends BaseTest {
 
     @DataProvider(name = "test-data")
     public Object[][] dataProviderMethod() {
-
+        // TODO Why do you decide use Object's arrays of arrays instead of patterns?
         Object[][] data = new Object[5][];
 
         data[0] = new Object[]{null, null, Arrays.asList(DifferentElements.EARTH), Colors.YELLOW,
