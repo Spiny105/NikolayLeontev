@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class HomePageSteps {
 
@@ -21,9 +22,9 @@ public class HomePageSteps {
         homePage = Selenide.open(url, HomePage.class);
     }
 
+    // TODO Why there is simple assert instead of assertEquals? (fixed)
     public void assertPageTitle(String expectedTitle) {
-        // TODO Why there is simple assert instead of assertEquals?
-        assert Selenide.title().contains(expectedTitle);
+        assertTrue(Selenide.title().contains(expectedTitle));
     }
 
     public void login(String userName, String login) {
@@ -54,12 +55,6 @@ public class HomePageSteps {
             softAssert.assertTrue(serviceElements.contains(element.getName()));
         }
         softAssert.assertAll();
-    }
-
-    // TODO Is these unused method required here?
-    public void assertImagesCount(int expectedCount) {
-        int actualBenefitIconsCount = homePage.getBenefitIcons().size();
-        assertEquals(actualBenefitIconsCount, expectedCount, "Wrong number of benefit icons");
     }
 
     public void assertTextsCountUnderImages(int expectedCount) {
@@ -107,11 +102,6 @@ public class HomePageSteps {
         serviceSubmenuItems.add(ServiceElementsMenu.DIFFERENT_ELEMENTS);
         checkServiceSubcategoryElementsAreDisplayed(serviceSubmenuItems);
 
-    }
-
-    // TODO Is this unused method required here?
-    public void goToDifferentElementsPage() {
-        homePage.clickOnServiceSubcategoryItem(ServiceElementsMenu.DIFFERENT_ELEMENTS);
     }
 
     public void goToTableWithPagesPage() {

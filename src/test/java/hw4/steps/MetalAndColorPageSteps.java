@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import hw4.MetalAndColorPage;
+import hw4.builder.MetalAndColorPageTestData;
 import hw4.enums.Colors;
 import hw4.enums.DifferentElements;
 import hw4.enums.Metals;
@@ -49,45 +50,43 @@ public class MetalAndColorPageSteps {
         }
     }
 
-    public void assertResult(Integer firstDigitInSummary, Integer secondDigitInSummary,
-                             List<DifferentElements> differentElementsToCheck, Colors colorToSelect,
-                             Metals metalToSelect, List<Vegetables> vegetablesToCheck) {
+    public void assertResult(MetalAndColorPageTestData testData) {
 
         ElementsCollection resultRecords = metalAndColorPage.getResultRecords();
 
         //Assert summary
-        if ( (firstDigitInSummary != null) && (secondDigitInSummary != null)) {
+        if ( (testData.getFirstDigitInSummary() != null) && (testData.getSecondDigitInSummary() != null)) {
             resultRecords.stream().filter(x -> x.getText()
-                    .contains("Summary: " + (firstDigitInSummary + secondDigitInSummary))).findFirst().get().shouldBe(Condition.visible);
+                    .contains("Summary: " + (testData.getFirstDigitInSummary() + testData.getSecondDigitInSummary()))).findFirst().get().shouldBe(Condition.visible);
         } else {
             resultRecords.stream().filter(x -> x.getText()
                     .contains("Summary: 3")).findFirst().get().shouldBe(Condition.visible);
         }
 
         //Assert selected elements
-        if (differentElementsToCheck != null) {
-            for (DifferentElements element : differentElementsToCheck) {
+        if (testData.getDifferentElementsToCheck() != null) {
+            for (DifferentElements element : testData.getDifferentElementsToCheck()) {
                 resultRecords.stream().filter(x -> x.getText().contains(element.getName())).findFirst().get().shouldBe(Condition.visible);
             }
         }
 
         //Assert selected color
-        if (colorToSelect != null) {
-            resultRecords.stream().filter(x -> x.getText().contains(colorToSelect.getName())).findFirst().get().shouldBe(Condition.visible);
+        if (testData.getColorToSelect() != null) {
+            resultRecords.stream().filter(x -> x.getText().contains(testData.getColorToSelect().getName())).findFirst().get().shouldBe(Condition.visible);
         }else{
             resultRecords.stream().filter(x -> x.getText().contains("Colors")).findFirst().get().shouldBe(Condition.visible);
         }
 
         //Assert selected metal
-        if (metalToSelect != null) {
-            resultRecords.stream().filter(x -> x.getText().contains(metalToSelect.getName())).findFirst().get().shouldBe(Condition.visible);
+        if (testData.getMetalToSelect() != null) {
+            resultRecords.stream().filter(x -> x.getText().contains(testData.getMetalToSelect().getName())).findFirst().get().shouldBe(Condition.visible);
         }else{
             resultRecords.stream().filter(x -> x.getText().contains("Metals")).findFirst().get().shouldBe(Condition.visible);
         }
 
         //Assert selected vegetables
-        if (vegetablesToCheck != null)
-        for (Vegetables v : vegetablesToCheck) {
+        if (testData.getVegetablesToCheck() != null)
+        for (Vegetables v : testData.getVegetablesToCheck()) {
             resultRecords.stream().filter(x -> x.getText().contains(v.getName())).findFirst().get().shouldBe(Condition.visible);
         }
     }

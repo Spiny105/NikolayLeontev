@@ -10,6 +10,7 @@ import hw4.steps.MetalAndColorPageSteps;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import hw4.builder.MetalAndColorPageTestData;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,25 +21,56 @@ public class WebTest extends BaseTest {
     private MetalAndColorPageSteps metalAndColorPageSteps;
 
     @DataProvider(name = "test-data")
-    public Object[][] dataProviderMethod() {
-        // TODO Why do you decide use Object's arrays of arrays instead of patterns?
-        Object[][] data = new Object[5][];
+    public static Object[][] dataProviderMethod() {
 
-        data[0] = new Object[]{null, null, Arrays.asList(DifferentElements.EARTH), Colors.YELLOW,
-                Metals.GOLD, null};
+        // TODO Why do you decide use Object's arrays of arrays instead of patterns? (fixed)
+        return new Object[][]{
 
-        data[1] = new Object[]{3, 8, null, null, null, Arrays.asList(Vegetables.CUCUMBER, Vegetables.TOMATO)};
+                {MetalAndColorPageTestData.builder()
+                        .firstDigitInSummary(null)
+                        .secondDigitInSummary(null)
+                        .differentElementsToCheck(Arrays.asList(DifferentElements.EARTH))
+                        .colorToSelect(Colors.YELLOW)
+                        .metalToSelect(Metals.GOLD)
+                        .vegetablesToCheck(null)
+                        .build()},
 
-        data[2] = new Object[]{3, 2,
-                Arrays.asList(DifferentElements.WIND, DifferentElements.FIRE, DifferentElements.WATER),
-                null, Metals.BRONZE, Arrays.asList(Vegetables.ONION)};
+                {MetalAndColorPageTestData.builder()
+                        .firstDigitInSummary(3)
+                        .secondDigitInSummary(8)
+                        .differentElementsToCheck(null)
+                        .colorToSelect(null)
+                        .metalToSelect(null)
+                        .vegetablesToCheck(Arrays.asList(Vegetables.CUCUMBER, Vegetables.TOMATO))
+                        .build()},
 
-        data[3] = new Object[]{5, 6, Arrays.asList(DifferentElements.WATER), Colors.GREEN,
-                Metals.SELEN, Arrays.asList(Vegetables.ONION, Vegetables.TOMATO, Vegetables.CUCUMBER, Vegetables.VEGETABLES)};
+                {MetalAndColorPageTestData.builder()
+                        .firstDigitInSummary(3)
+                        .secondDigitInSummary(2)
+                        .differentElementsToCheck(Arrays.asList(DifferentElements.WIND, DifferentElements.FIRE, DifferentElements.WATER))
+                        .colorToSelect(null)
+                        .metalToSelect(Metals.BRONZE)
+                        .vegetablesToCheck(Arrays.asList(Vegetables.ONION))
+                        .build()},
 
-        data[4] = new Object[]{null, null, null, null, null, null};
+                {MetalAndColorPageTestData.builder()
+                        .firstDigitInSummary(5)
+                        .secondDigitInSummary(6)
+                        .differentElementsToCheck(Arrays.asList(DifferentElements.WATER))
+                        .colorToSelect(Colors.GREEN)
+                        .metalToSelect(Metals.SELEN)
+                        .vegetablesToCheck(Arrays.asList(Vegetables.ONION, Vegetables.TOMATO, Vegetables.CUCUMBER, Vegetables.VEGETABLES))
+                        .build()},
 
-        return data;
+                {MetalAndColorPageTestData.builder()
+                        .firstDigitInSummary(null)
+                        .secondDigitInSummary(null)
+                        .differentElementsToCheck(null)
+                        .colorToSelect(null)
+                        .metalToSelect(null)
+                        .vegetablesToCheck(null)
+                        .build()},
+        };
     }
 
     @BeforeMethod
@@ -50,9 +82,7 @@ public class WebTest extends BaseTest {
     }
 
     @Test(dataProvider = "test-data")
-    public void testScenario(Integer firstDigitInSummary, Integer secondDigitInSummary,
-                             List<DifferentElements> differentElementsToCheck, Colors colorToSelect,
-                             Metals metalToSelect, List<Vegetables> vegetablesToCheck) {
+    public void testScenario(MetalAndColorPageTestData testData) {
 
         //Assert Browser title
         homePageSteps.assertPageTitle("Home Page");
@@ -67,31 +97,30 @@ public class WebTest extends BaseTest {
         homePageSteps.goToMetalAndColorsPage();
 
         //Fill form
-        if (vegetablesToCheck != null) {
-            metalAndColorPageSteps.selectVegetables(vegetablesToCheck);
+        if (testData.getVegetablesToCheck() != null) {
+            metalAndColorPageSteps.selectVegetables(testData.getVegetablesToCheck());
         }
 
-        if (metalToSelect != null) {
-            metalAndColorPageSteps.selectMetal(metalToSelect);
+        if (testData.getMetalToSelect() != null) {
+            metalAndColorPageSteps.selectMetal(testData.getMetalToSelect());
         }
 
-        if (colorToSelect != null) {
-            metalAndColorPageSteps.selectColor(colorToSelect);
+        if (testData.getColorToSelect() != null) {
+            metalAndColorPageSteps.selectColor(testData.getColorToSelect());
         }
 
-        if (differentElementsToCheck != null) {
-            metalAndColorPageSteps.selectDifferentElements(differentElementsToCheck);
+        if (testData.getDifferentElementsToCheck() != null) {
+            metalAndColorPageSteps.selectDifferentElements(testData.getDifferentElementsToCheck());
         }
 
-        if ((firstDigitInSummary != null) && (secondDigitInSummary != null)) {
-            metalAndColorPageSteps.selectRadios(firstDigitInSummary, secondDigitInSummary);
+        if ((testData.getFirstDigitInSummary() != null) && (testData.getSecondDigitInSummary() != null)) {
+            metalAndColorPageSteps.selectRadios(testData.getFirstDigitInSummary(), testData.getSecondDigitInSummary());
         }
 
         //Click on submit button
         metalAndColorPageSteps.submit();
 
         //Assert result
-        metalAndColorPageSteps.assertResult(firstDigitInSummary, secondDigitInSummary, differentElementsToCheck,
-                colorToSelect, metalToSelect, vegetablesToCheck);
+        metalAndColorPageSteps.assertResult(testData);
     }
 }

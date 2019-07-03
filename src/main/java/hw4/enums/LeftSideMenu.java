@@ -1,5 +1,8 @@
 package hw4.enums;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum LeftSideMenu {
 
     HOME("Home"),
@@ -17,5 +20,9 @@ public enum LeftSideMenu {
 
     public String getName() {
         return name;
+    }
+
+    public static List<LeftSideMenu> getAllElements(){
+        return Arrays.asList(HOME, CONTACT_FORM, SERVICE, METALS_AND_COLORS, ELEMENTS_PACKS);
     }
 }

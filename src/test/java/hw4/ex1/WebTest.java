@@ -40,12 +40,7 @@ public class WebTest extends BaseTest {
 
         //Assert header section
         // TODO It will be better if you have static method in enum which return List of its elements
-        List<LeftSideMenu> leftSideMenuItems = new ArrayList<>();
-        leftSideMenuItems.add(LeftSideMenu.HOME);
-        leftSideMenuItems.add(LeftSideMenu.SERVICE);
-        leftSideMenuItems.add(LeftSideMenu.CONTACT_FORM);
-        leftSideMenuItems.add(LeftSideMenu.METALS_AND_COLORS);
-        homePageSteps.checkLeftSideElementsAreDisplayed(leftSideMenuItems);
+        homePageSteps.checkLeftSideElementsAreDisplayed(LeftSideMenu.getAllElements());
 
         //Assert "Service" subcategory items
         homePageSteps.assertServiceSubcategoryInHeader();
