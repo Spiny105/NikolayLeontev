@@ -22,7 +22,6 @@ public class HomePageSteps {
         homePage = Selenide.open(url, HomePage.class);
     }
 
-    // TODO Why there is simple assert instead of assertEquals? (fixed)
     public void assertPageTitle(String expectedTitle) {
         assertTrue(Selenide.title().contains(expectedTitle));
     }
