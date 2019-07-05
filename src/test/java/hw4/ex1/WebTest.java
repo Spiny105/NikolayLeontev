@@ -39,7 +39,6 @@ public class WebTest extends BaseTest {
         homePageSteps.assertPageTitle("Home Page");
 
         //Assert header section
-        // TODO It will be better if you have static method in enum which return List of its elements
         homePageSteps.checkLeftSideElementsAreDisplayed(LeftSideMenu.getAllElements());
 
         //Assert "Service" subcategory items

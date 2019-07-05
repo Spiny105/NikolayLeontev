@@ -23,7 +23,6 @@ public class WebTest extends BaseTest {
     @DataProvider(name = "test-data")
     public static Object[][] dataProviderMethod() {
 
-        // TODO Why do you decide use Object's arrays of arrays instead of patterns? (fixed)
         return new Object[][]{
 
                 {MetalAndColorPageTestData.builder()
