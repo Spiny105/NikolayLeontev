@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="jenkins">
+
+    <test name="jenkins">
+        <classes>
+            <class name="hw5.ex1.WebTest"/>
+            <class name="hw5.ex2.WebTest"/>
+            <class name="hw5.ex3.WebTest"/>
+        </classes>
+    </test>
+
+</suite>

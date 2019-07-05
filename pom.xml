@@ -15,6 +15,10 @@
 
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 
+        <allure.version>2.12.1</allure.version>
+
+        <aspectj.version>1.8.10</aspectj.version>
+
     </properties>
 
     <profiles>
@@ -24,7 +28,7 @@
         <profile>
             <id>calculator-sum-and-subtract-test</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>src/test/resources/hw1/sumAndSubtractTest.xml</suite.xml>
@@ -116,6 +120,18 @@
             </properties>
         </profile>
 
+        <!--HW5 profile-->
+
+        <profile>
+            <id>jenkins</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw5/jenkins.xml</suite.xml>
+            </properties>
+        </profile>
+
     </profiles>
 
     <dependencies>
@@ -154,8 +170,25 @@
             <scope>provided</scope>
         </dependency>
 
-    </dependencies>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.9</version>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
@@ -166,6 +199,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
@@ -174,10 +208,20 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.xml}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
