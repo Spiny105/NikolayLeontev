@@ -4,6 +4,7 @@ import hw5.DifferentElementsPage;
 import hw5.enums.DifferentElementsPageCheckBoxes;
 import hw5.enums.DifferentElementsPageDropdownItems;
 import hw5.enums.DifferentElementsPageRadios;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,19 +21,21 @@ public class DifferentElementsPageSteps {
         differentElementsPage = PageFactory.initElements(driver, DifferentElementsPage.class);
     }
 
+    @Step("Chech elements count on page")
     public void checkElementsCountOnPage(){
         SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(differentElementsPage.getCheckBoxes().size(), 4);
-        softAssert.assertEquals(differentElementsPage.getRadios().size(),4);
-        softAssert.assertTrue(differentElementsPage.getButton().isDisplayed());
-        softAssert.assertTrue(differentElementsPage.getDefaultButton().isDisplayed());
-        softAssert.assertTrue(differentElementsPage.getDropdown().isDisplayed());
-        softAssert.assertTrue(differentElementsPage.getLeftSection().isDisplayed());
-        softAssert.assertTrue(differentElementsPage.getRightSection().isDisplayed());
+        softAssert.assertEquals(differentElementsPage.getCheckBoxes().size(), 4, "Wrong number of checkboxes");
+        softAssert.assertEquals(differentElementsPage.getRadios().size(),4, "Wrong number of radios");
+        softAssert.assertTrue(differentElementsPage.getButton().isDisplayed(), "Button is't visible");
+        softAssert.assertTrue(differentElementsPage.getDefaultButton().isDisplayed(), "Default button is't visible");
+        softAssert.assertTrue(differentElementsPage.getDropdown().isDisplayed(), "Dropdown is't visible");
+        softAssert.assertTrue(differentElementsPage.getLeftSection().isDisplayed(), "Left section is't visible");
+        softAssert.assertTrue(differentElementsPage.getRightSection().isDisplayed(), "Right section is't visible");
         softAssert.assertAll();
     }
 
+    @Step("Checkboxes functionality check")
     public void assertCheckBox(DifferentElementsPageCheckBoxes item){
 
         WebElement checkBox = differentElementsPage.getCheckBoxes()
@@ -49,6 +52,7 @@ public class DifferentElementsPageSteps {
 
     }
 
+    @Step("Radios functionlity check")
     public void checkRadio(DifferentElementsPageRadios item){
         WebElement radio = differentElementsPage.getRadios()
                 .stream()
@@ -62,6 +66,7 @@ public class DifferentElementsPageSteps {
         assertTrue(differentElementsPage.getLastLogMessage().contains(expectedString));
     }
 
+    @Step("Dropdown check")
     public void assertDropDown(DifferentElementsPageDropdownItems item){
         differentElementsPage.selectDropDownValue(item);
         assertTrue(differentElementsPage.getLastLogMessage().contains("Colors: value changed to " + item.getName()));
