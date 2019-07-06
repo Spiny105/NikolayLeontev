@@ -7,6 +7,7 @@ import hw5.enums.DifferentElementsPageRadios;
 import hw5.BaseTest;
 import hw5.steps.DifferentElementsPageSteps;
 import hw5.steps.HomePageSteps;
+import io.qameta.allure.Step;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -25,6 +26,7 @@ public class WebTest extends BaseTest {
         differentElementsPageSteps = new DifferentElementsPageSteps(driver);
     }
 
+    @Step("Test of homepage and different elements pages")
     @Test
     public void testScenario() {
 

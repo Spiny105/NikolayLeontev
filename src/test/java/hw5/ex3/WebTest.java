@@ -7,6 +7,7 @@ import hw5.steps.HomePageSteps;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import io.qameta.allure.Step;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class WebTest extends BaseTest {
         homePageSteps = new HomePageSteps(driver);
     }
 
+    @Step("Checking if Home Page elements are displayed properly (but it's going to fail)")
     @Test
     public void testScenario() {
 
