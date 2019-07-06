@@ -1,5 +1,6 @@
 package hw5.steps;
 
+import hw5.AllureAttachmentListener;
 import hw5.HomePage;
 import hw5.enums.LeftSideMenu;
 import hw5.enums.ServiceElementsMenu;
@@ -7,6 +8,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Listeners;
 import org.testng.asserts.SoftAssert;
 
 import java.util.Arrays;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+@Listeners(AllureAttachmentListener.class)
 public class HomePageSteps {
 
     private HomePage homePage;

@@ -1,5 +1,6 @@
 package hw5.steps;
 
+import hw5.AllureAttachmentListener;
 import hw5.DifferentElementsPage;
 import hw5.enums.DifferentElementsPageCheckBoxes;
 import hw5.enums.DifferentElementsPageDropdownItems;
@@ -9,10 +10,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Listeners;
 import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.assertTrue;
 
+@Listeners(AllureAttachmentListener.class)
 public class DifferentElementsPageSteps {
 
     private DifferentElementsPage differentElementsPage;
