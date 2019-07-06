@@ -1,14 +1,17 @@
 package hw5.ex1;
 
+import hw5.AllureAttachmentListener;
 import hw5.enums.LeftSideMenu;
 import hw5.BaseTest;
 import hw5.steps.HomePageSteps;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.annotations.Listeners;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Listeners(AllureAttachmentListener.class)
 public class WebTest extends BaseTest {
 
     private HomePageSteps homePageSteps;

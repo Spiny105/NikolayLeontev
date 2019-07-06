@@ -1,5 +1,6 @@
 package hw5.ex2;
 
+import hw5.AllureAttachmentListener;
 import hw5.enums.DifferentElementsPageCheckBoxes;
 import hw5.enums.DifferentElementsPageDropdownItems;
 import hw5.enums.DifferentElementsPageRadios;
@@ -7,8 +8,10 @@ import hw5.BaseTest;
 import hw5.steps.DifferentElementsPageSteps;
 import hw5.steps.HomePageSteps;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(AllureAttachmentListener.class)
 public class WebTest extends BaseTest {
 
     private HomePageSteps homePageSteps;

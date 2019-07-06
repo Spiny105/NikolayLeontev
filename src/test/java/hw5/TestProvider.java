@@ -1,9 +1,7 @@
 package hw5;
 
 import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -11,7 +9,6 @@ public class TestProvider {
 
     private static TestProvider instance;
 
-    @Getter @Setter
     private WebDriver driver;
 
     public static TestProvider getInstance() {
@@ -19,5 +16,13 @@ public class TestProvider {
             instance = new TestProvider();
         }
         return instance;
+    }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
     }
 }
