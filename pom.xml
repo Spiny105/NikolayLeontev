@@ -19,6 +19,8 @@
 
         <aspectj.version>1.8.10</aspectj.version>
 
+        <cucumber.version>1.2.5</cucumber.version>
+
     </properties>
 
     <profiles>
@@ -120,7 +122,7 @@
             </properties>
         </profile>
 
-        <!--HW5 profile-->
+        <!--HW5 profiles-->
 
         <profile>
             <id>jenkins</id>
@@ -131,6 +133,8 @@
                 <suite.xml>src/test/resources/hw5/jenkins.xml</suite.xml>
             </properties>
         </profile>
+
+        <!--HW6 profiles-->
 
     </profiles>
 
@@ -186,6 +190,22 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.9.9</version>
+        </dependency>
+
+        <!-- Cucumber -->
+
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
