@@ -74,6 +74,10 @@ public abstract class BasePage {
     }
 
     public void clickOnServiceSubcategoryItem(ServiceElementsMenu element){
-        serviceItems.stream().filter(x->x.getText().equals(element.getName())).findFirst().orElse(null).click();
+        clickOnServiceSubcategoryItem(element.getName());
+    }
+
+    public void clickOnServiceSubcategoryItem(String element){
+        serviceItems.stream().filter(x->x.getText().equals(element)).findFirst().orElse(null).click();
     }
 }

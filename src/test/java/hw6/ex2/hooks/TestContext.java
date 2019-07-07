@@ -1,4 +1,4 @@
-package hw6.hooks;
+package hw6.ex2.hooks;
 
 import org.openqa.selenium.WebDriver;
 

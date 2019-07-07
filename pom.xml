@@ -136,6 +136,26 @@
 
         <!--HW6 profiles-->
 
+        <profile>
+            <id>cucumber-ex1</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw6/cucumberEx1.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>cucumber-ex2</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw6/cucumberEx2.xml</suite.xml>
+            </properties>
+        </profile>
+
     </profiles>
 
     <dependencies>
