@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// TODO Code duplication from hw6.ex1.steps (fixed)
 public class ActionSteps extends BaseStep {
 
     @When("^I click on \"([^\"]*)\" button in Header$")
@@ -32,7 +31,6 @@ public class ActionSteps extends BaseStep {
 
         userTablePage.getCheckBoxes().get(userIndex).click();
 
-        // TODO Do you use this variable somewhere? (fixed)
     }
 
     @When("^I click on dropdown in column Type for user Roman$")

@@ -15,8 +15,6 @@ import java.util.stream.Collectors;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-// TODO Code duplication from hw6.ex1.steps (fixed)
-// TODO AssertionSteps (fixed)
 public class AssertionSteps extends BaseStep {
 
     @Then("^\"([^\"]*)\" page is opened$")
@@ -201,7 +199,6 @@ public class AssertionSteps extends BaseStep {
 
     @Then("Log row is displayed, dropdown name and selected value '(.+)' is corresponding to selected")
     public void checkSelectedDropdownElement(String item) {
-        // TODO Why this variable is here? (fixed)
         assertTrue(differentElementsPage.getLastLogMessage().contains("Colors: value changed to " + item));
     }
 
