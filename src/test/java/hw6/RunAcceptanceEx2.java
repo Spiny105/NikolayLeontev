@@ -8,5 +8,5 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
         glue = {"classpath:hw6"},
         tags = ("@ex2")
 )
-public class RunAcceptanceEx2 extends AbstractTestNGCucumberTests{
+public class RunAcceptanceEx2 extends AbstractTestNGCucumberTests {
 }

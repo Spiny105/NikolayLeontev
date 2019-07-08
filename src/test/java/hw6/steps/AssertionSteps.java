@@ -148,7 +148,7 @@ public class AssertionSteps extends BaseStep {
     }
 
     @Then("Different elements page should have (\\d+) checkboxes")
-    public void chechCheckboxes(int expectedCount){
+    public void chechCheckboxes(int expectedCount) {
         assertEquals(differentElementsPage.getCheckBoxes().size(), expectedCount);
     }
 

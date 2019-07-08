@@ -36,8 +36,7 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public List<WebElement> getBenefitIcons()
-    {
+    public List<WebElement> getBenefitIcons() {
         return benefitIcons;
     }
 
@@ -45,11 +44,11 @@ public class HomePage extends BasePage {
         return benefitTexts;
     }
 
-    public String getMainHeaderText(){
+    public String getMainHeaderText() {
         return mainHeader.getText();
     }
 
-    public WebElement getPageText(){
+    public WebElement getPageText() {
         return pageText;
     }
 
@@ -57,11 +56,11 @@ public class HomePage extends BasePage {
         return iFrame;
     }
 
-    public void switchToIFrame(){
+    public void switchToIFrame() {
         driver.switchTo().frame(iFrame);
     }
 
-    public void switchToOriginalPage(){
+    public void switchToOriginalPage() {
         driver.switchTo().defaultContent();
     }
 
@@ -73,10 +72,12 @@ public class HomePage extends BasePage {
         return subHeader;
     }
 
-    public List<WebElement> getServiceItems(){ return serviceItems; }
+    public List<WebElement> getServiceItems() {
+        return serviceItems;
+    }
 
-    public void clickOnServiceItem(ServiceElementsMenu serviceElementsMenu){
-        serviceItems.stream().filter(x->x.getText().equals(serviceElementsMenu.getName())).findFirst().orElse(null).click();
+    public void clickOnServiceItem(ServiceElementsMenu serviceElementsMenu) {
+        serviceItems.stream().filter(x -> x.getText().equals(serviceElementsMenu.getName())).findFirst().orElse(null).click();
     }
 
     public static HomePage getInstance(WebDriver driver) {

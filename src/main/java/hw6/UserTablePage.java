@@ -22,10 +22,10 @@ public class UserTablePage extends BasePage {
     private List<WebElement> descriptionTextsCollumn;
 
     @FindBy(xpath = "//*[@id=\"user-table\"]//select")
-    private List<WebElement>  dropdowns;
+    private List<WebElement> dropdowns;
 
     @FindBy(xpath = "//*[@id=\"user-table\"]//a")
-    private List<WebElement>  userNames;
+    private List<WebElement> userNames;
 
     @FindBy(xpath = "//*[@id=\"user-table\"]//img")
     private List<WebElement> descriptionImages;
@@ -47,11 +47,11 @@ public class UserTablePage extends BasePage {
         return instance;
     }
 
-    public List<WebElement>  getDropdowns() {
+    public List<WebElement> getDropdowns() {
         return dropdowns;
     }
 
-    public List<WebElement>  getUserNames() {
+    public List<WebElement> getUserNames() {
         return userNames;
     }
 
@@ -67,14 +67,14 @@ public class UserTablePage extends BasePage {
         return checkBoxes;
     }
 
-    public List<String> getLogMessages(){
+    public List<String> getLogMessages() {
         return driver.findElements(By.xpath("//*[@id=\"mCSB_2_container\"]/section[1]//li"))
                 .stream()
-                .map(x->x.getText())
+                .map(x -> x.getText())
                 .collect(Collectors.toList());
     }
 
-    public List<WebElement> getDropdownList(int dropdownList){
+    public List<WebElement> getDropdownList(int dropdownList) {
         return dropdowns.get(dropdownList).findElements(By.xpath("./option"));
     }
 

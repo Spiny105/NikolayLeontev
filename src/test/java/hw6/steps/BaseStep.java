@@ -1,6 +1,7 @@
 package hw6.steps;
 
 // TODO Unused imports
+
 import hw6.DifferentElementsPage;
 import hw6.HomePage;
 import hw6.UserTablePage;
@@ -14,8 +15,8 @@ public abstract class BaseStep {
     protected DifferentElementsPage differentElementsPage;
 
     public BaseStep() {
-        homePage                = HomePage.getInstance(TestContext.getDriver());
-        userTablePage           = UserTablePage.getInstance(TestContext.getDriver());
+        homePage = HomePage.getInstance(TestContext.getDriver());
+        userTablePage = UserTablePage.getInstance(TestContext.getDriver());
         differentElementsPage = DifferentElementsPage.getInstance(TestContext.getDriver());
     }
 

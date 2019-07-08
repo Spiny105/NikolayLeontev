@@ -57,11 +57,11 @@ public abstract class BasePage {
         return driver.getTitle();
     }
 
-    public String getUserName(){
+    public String getUserName() {
         return driver.findElement(By.id("user-name")).getText();
     }
 
-    public List<WebElement> getLeftSidebarItems(){
+    public List<WebElement> getLeftSidebarItems() {
         return leftSidebarItems;
     }
 
@@ -73,11 +73,11 @@ public abstract class BasePage {
         return leftSection;
     }
 
-    public void clickOnServiceSubcategoryItem(ServiceElementsMenu element){
+    public void clickOnServiceSubcategoryItem(ServiceElementsMenu element) {
         clickOnServiceSubcategoryItem(element.getName());
     }
 
-    public void clickOnServiceSubcategoryItem(String element){
-        serviceItems.stream().filter(x->x.getText().equals(element)).findFirst().orElse(null).click();
+    public void clickOnServiceSubcategoryItem(String element) {
+        serviceItems.stream().filter(x -> x.getText().equals(element)).findFirst().orElse(null).click();
     }
 }

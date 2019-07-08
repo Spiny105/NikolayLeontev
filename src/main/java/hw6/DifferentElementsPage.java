@@ -1,6 +1,5 @@
 package hw6;
 
-import com.codeborne.selenide.ElementsCollection;
 import hw6.enums.DifferentElementsPageDropdownItems;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -71,23 +70,23 @@ public class DifferentElementsPage extends BasePage {
         return logPanel;
     }
 
-    public void selectDropDownValue(DifferentElementsPageDropdownItems item){
+    public void selectDropDownValue(DifferentElementsPageDropdownItems item) {
         dropDown.click();
         Select select = new Select(dropDown);
         select.selectByVisibleText(item.getName());
     }
 
-    public void selectDropDownValue(String item){
+    public void selectDropDownValue(String item) {
         dropDown.click();
         Select select = new Select(dropDown);
         select.selectByVisibleText(item);
     }
 
-    public String getLastLogMessage(){
+    public String getLastLogMessage() {
         return driver.findElement(By.xpath("//ul[@class = 'panel-body-list logs']/li[1]")).getText();
     }
 
-    public List<String> getLogMessages(){
+    public List<String> getLogMessages() {
         return driver.findElements(By.xpath("//ul[@class = 'panel-body-list logs']/li"))
                 .stream().map(x -> x.getText())
                 .collect(Collectors.toList());
