@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 
 import static org.testng.Assert.assertEquals;
 
-// TODO Code duplication from hw6.ex1.steps (fixed)
 public class GivenSteps extends BaseStep {
 
     @Given("I am on the JDI Index Page")
@@ -23,7 +22,6 @@ public class GivenSteps extends BaseStep {
 
 
     @Given("^I login as user \"([^\"]*)\" with login \"([^\"]*)\" and password \"([^\"]*)\"$")
-    // TODO Why do you decide hardcoded username and password? (fixed)
     public void loginAsUser(String expectedUsername, String login, String password) {
 
         homePage.login(login, password);
