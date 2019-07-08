@@ -1,9 +1,9 @@
 Feature: Exercise2
 
-  @run
+  @ex2
   Scenario: User Table Page test
     Given I am on "Home Page"
-    And I login as user "Piter Chailovskii"
+    And I login as user "Piter Chailovskii" with login "epam" and password "1234"
     When I click on "Service" button in Header
     And I click on "User Table" button in Service dropdown
     Then "User Table" page is opened

@@ -1,4 +1,4 @@
-package hw6.ex2.hooks;
+package hw6.hooks;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// TODO This class is duplicated for the CucumberHooks from hw6.ex1.hooks
+// TODO This class is duplicated for the CucumberHooks from hw6.ex1.hooks (fixed)
 public class CucumberHooks {
 
     @Before

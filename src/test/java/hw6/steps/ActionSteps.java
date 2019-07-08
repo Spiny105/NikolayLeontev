@@ -1,16 +1,46 @@
-package hw6.ex1.steps;
+package hw6.steps;
 
 import cucumber.api.java.en.When;
 import hw6.enums.LeftSideMenu;
 import hw6.enums.ServiceElementsMenu;
-import hw6.ex1.hooks.TestContext;
+import hw6.hooks.TestContext;
 import org.openqa.selenium.By;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-// TODO Code duplication from hw6.ex2.steps
+// TODO Code duplication from hw6.ex1.steps (fixed)
 public class ActionSteps extends BaseStep {
 
+    @When("^I click on \"([^\"]*)\" button in Header$")
+    public void clickOnButton(String buttonName){
+        homePage.getLeftSection().findElement(By.linkText(buttonName)).click();
+    }
+
+    @When("^I click on \"([^\"]*)\" button in Service dropdown$")
+    public void clickOnElementInDropdownList(String item){
+        homePage.clickOnServiceSubcategoryItem(item);
+    }
+
+    @When("^I select 'vip' checkbox for \"([^\"]*)\"$")
+    public void selectVipCheckbox(String name){
+        int userIndex = userTablePage.getUserNames()
+                .stream()
+                .map(x->x.getText())
+                .collect(Collectors.toList())
+                .indexOf(name);
+
+        userTablePage.getCheckBoxes().get(userIndex).click();
+
+        // TODO Do you use this variable somewhere? (fixed)
+    }
+
+    @When("^I click on dropdown in column Type for user Roman$")
+    public void clickOnDropdownRoman(){
+        int romanIndex = userTablePage.getUserNames().stream().map(x->x.getText()).collect(Collectors.toList()).indexOf("Roman");
+        userTablePage.getDropdowns().get(romanIndex).click();
+
+    }
     @When("I login as '([^\"]*)'/'([^\"]*)'")
     public void iLoginAs(String username, String password) {
         TestContext.getDriver().findElement(By.id("user-icon")).click();
@@ -63,4 +93,6 @@ public class ActionSteps extends BaseStep {
                     .orElse(null).click();
         }
     }
+
+
 }
