@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+// TODO Code duplication from hw6.ex2.steps
+// TODO AssertionSteps
 public class AssertationSteps extends BaseStep {
 
     @Then("Browser title shoul be '(.+)'")
@@ -110,6 +112,7 @@ public class AssertationSteps extends BaseStep {
 
     @Then("^There is correct log for selected '(.+)' color$")
     public void checkSelectedDropdownElement(String item) {
+        // TODO Why this variable is here?
         String expectedString = "metal: value changed to " + item;
         assertTrue(differentElementsPage.getLastLogMessage().contains("Colors: value changed to " + item));
     }

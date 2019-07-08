@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
+// TODO Code duplication from hw6.ex2.steps
 public class ActionSteps extends BaseStep {
 
     @When("I login as '([^\"]*)'/'([^\"]*)'")

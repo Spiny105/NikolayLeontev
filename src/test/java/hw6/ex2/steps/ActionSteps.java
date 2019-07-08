@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 
 import java.util.stream.Collectors;
 
+// TODO Code duplication from hw6.ex1.steps
 public class ActionSteps extends BaseStep {
 
     @When("^I click on \"([^\"]*)\" button in Header$")
@@ -28,6 +29,7 @@ public class ActionSteps extends BaseStep {
 
         userTablePage.getCheckBoxes().get(userIndex).click();
 
+        // TODO Do you use this variable somewhere?
         userIndex = userTablePage.getUserNames()
                 .stream()
                 .map(x->x.getText())

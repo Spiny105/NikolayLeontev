@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+// TODO Code duplication from hw6.ex1.steps
+// TODO AssertionSteps
 public class AssertationSteps extends BaseStep {
 
     @Then("^\"([^\"]*)\" page is opened$")

@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
+// TODO This class is duplicated for the CucumberHooks from hw6.ex2.hooks
 public class CucumberHooks {
 
     @Before
